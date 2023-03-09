@@ -37,7 +37,9 @@ class UsersController < ApplicationController
 
   def update
     input_user = params.fetch("input_username")
-    matching_users = User.where({:username => input_user})
+
+    the_id = params.fetch("modify_id")
+    matching_users = User.where({:id => the_id})
     the_user = matching_users.at(0)
 
     the_user.username = input_user
